@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-6 animate-fade-in delay-400">
           <div className="flex justify-center gap-6 items-center">
             <a
-              href="https://drive.google.com/uc?export=download&id=1EZsCzHb2aPdgMRxkcXoachhuiWD6M_Xg"
+              href="https://drive.google.com/uc?export=download&id=12ip3KJyNEL1blJhfkVZjdEQKDO-SJz_i"
               download="Chandra_Sekhar_Dutta_Resume.pdf"
               className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg"
             >
