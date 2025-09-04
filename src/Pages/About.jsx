@@ -1,4 +1,3 @@
-// About.jsx
 import React, { useEffect, useState } from 'react'
 
 import skills from '../assets/skills.svg'
@@ -33,7 +32,6 @@ const About = () => {
           'Medium': `${leetcodeData.mediumSolved} / ${leetcodeData.totalMedium}`,
           'Hard': `${leetcodeData.hardSolved} / ${leetcodeData.totalHard}`,
         })
-
       } catch (error) {
         console.error('Error fetching stats:', error)
       }
@@ -52,12 +50,14 @@ const About = () => {
             I have maintained my a CGPA of 9.29 while actively contributing to the tech world. I love building real-world solutions that make an impact and constantly seek to expand my knowledge through hands-on learning.
           </p>
 
-          <div className="text-left bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-xl p-8">
+          {/* Dark Translucent Technical Skills */}
+          <div className="text-left rounded-xl shadow-xl p-8
+            bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-purple-400 hover:shadow-purple-500/30 transition">
             <h2 className="text-2xl font-semibold mb-4 text-purple-300 flex items-center gap-3">
               <img src={skills} alt="skills icon" className="w-7 h-7" />
               Technical Skills
             </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-300">
+            <ul className="list-disc list-inside space-y-2 text-gray-200">
               <li><span className="font-medium text-white">Languages:</span> C++, Python, JavaScript, SQL</li>
               <li><span className="font-medium text-white">Frontend:</span> React.js, HTML5, CSS3, Tailwind CSS</li>
               <li><span className="font-medium text-white">Backend:</span> Node.js, Express.js</li>
@@ -67,12 +67,14 @@ const About = () => {
             </ul>
           </div>
 
-          <div className="mt-12 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-xl p-8 text-left">
+          {/* Dark Translucent Highlights */}
+          <div className="mt-12 rounded-xl shadow-xl p-8 text-left
+            bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-purple-400 hover:shadow-purple-500/30 transition">
             <h2 className="text-2xl font-semibold mb-4 text-purple-300 flex items-center gap-3">
               <img src={highlights} alt="highlights icon" className="w-7 h-7" />
               Highlights
             </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-300">
+            <ul className="list-disc list-inside space-y-2 text-gray-200">
               <li>Developed a smart irrigation system using IoT for automated plant watering.</li>
               <li>Built full-stack apps including a Resume Builder, TODO list, and real-time chat app in C++ and HTML, CSS.</li>
               <li>Smart India Hackathon 2023 Semi-finalist - contributed to impactful educational tech.</li>
@@ -89,13 +91,15 @@ const About = () => {
         </h1>
 
         <div className="flex flex-col items-center gap-10 px-4">
+          {/* Dark GitHub Card */}
           <a
             href="https://github.com/Chandra-Sekhar-Dutta"
             target="_blank"
             rel="noopener noreferrer"
             className="group w-full md:w-3/4 lg:w-2/3 transform transition duration-500 hover:scale-105"
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl border border-purple-600 bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 hover:border-pink-500">
+            <div className="rounded-xl overflow-hidden shadow-2xl p-4
+              bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-pink-500 hover:shadow-pink-500/30 transition">
               <p className="text-lg font-semibold text-center text-purple-300 mb-2 group-hover:text-pink-400 transition">
                 GitHub Contributions
               </p>
@@ -107,13 +111,15 @@ const About = () => {
             </div>
           </a>
 
+          {/* Dark LeetCode Card */}
           <a
             href="https://leetcode.com/u/Chandra_Sekhar_Dutta/"
             target="_blank"
             rel="noopener noreferrer"
             className="group w-full md:w-3/4 lg:w-2/3 transform transition duration-500 hover:scale-105"
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl border border-yellow-600 bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 hover:border-yellow-400">
+            <div className="rounded-xl overflow-hidden shadow-2xl p-4
+              bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-yellow-400 hover:shadow-yellow-500/30 transition">
               <p className="text-lg font-semibold text-center text-yellow-300 mb-2 group-hover:text-yellow-400 transition">
                 LeetCode Progress
               </p>
@@ -126,10 +132,9 @@ const About = () => {
           </a>
         </div>
 
-
         <div className="mt-20 mb-10 pt-10 text-center">
           <Services />
-          <Research/>
+          <Research />
         </div>
       </section>
     </>

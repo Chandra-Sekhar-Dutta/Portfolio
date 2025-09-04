@@ -20,7 +20,7 @@ const Research = () => {
       overview:
         "This field research aimed to understand the socio-economic status and agricultural practices of tribal women farmers in four villages of Nadia district, West Bengal. It also introduced school children to science-based learning through field activities and workshops.",
       methodology:
-        "A month-long study (June 5 – July 5, 2024) involving 50 tribal women was conducted using structured interviews, field visits, and group discussions. Partner institutions included ICAR-NDRI and WBUAFS.",
+        "A month-long study (June 5 - July 5, 2024) involving 50 tribal women was conducted using structured interviews, field visits, and group discussions. Partner institutions included ICAR-NDRI and WBUAFS.",
       findings:
         "Women showed strong interest in integrated farming systems and technology adoption. Most used hybrid seeds and social media for farming knowledge. Children participated in science awareness sessions, enhancing their engagement with education.",
       conclusion:
@@ -29,7 +29,7 @@ const Research = () => {
   ];
 
   return (
-    <section>
+        <section>
       <div className="max-w-6xl mx-auto px-6 py-28">
         <h2 className="text-4xl font-bold text-center text-purple-300 mb-12">My Research Projects</h2>
 
@@ -37,27 +37,25 @@ const Research = () => {
           {researchProjects.map((project) => (
             <div
               key={project.id}
-              className="relative bg-gray-800 bg-opacity-60 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.03] hover:ring-2 hover:ring-purple-400 hover:bg-opacity-70 transform transition-all duration-300 backdrop-blur-md cursor-pointer overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-purple-500/10 before:to-indigo-500/10 before:rounded-2xl"
+              className="relative p-6 rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-[1.05] cursor-pointer
+              bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-purple-400 hover:shadow-purple-500/30"
             >
               <div className="relative z-10 space-y-6">
                 <h3 className="text-2xl font-semibold text-purple-200">{project.title}</h3>
 
-                <div className="space-y-3 text-gray-300">
+                <div className="space-y-3 text-gray-200">
                   <div>
                     <h4 className="text-lg font-semibold text-purple-300 mb-1">Overview</h4>
                     <p>{project.overview}</p>
                   </div>
-
                   <div>
                     <h4 className="text-lg font-semibold text-purple-300 mb-1">Methodology</h4>
                     <p>{project.methodology}</p>
                   </div>
-
                   <div>
                     <h4 className="text-lg font-semibold text-purple-300 mb-1">Key Findings</h4>
                     <p>{project.findings}</p>
                   </div>
-
                   <div>
                     <h4 className="text-lg font-semibold text-purple-300 mb-1">Conclusion</h4>
                     <p>{project.conclusion}</p>

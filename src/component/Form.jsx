@@ -52,8 +52,17 @@ const Form = () => {
 
   return (
     <section>
-      <div className="max-w-xl mx-auto bg-gray-800 bg-opacity-60 backdrop-blur-md rounded-3xl p-10 shadow-2xl hover:shadow-purple-600 transition-all duration-300">
-        <h2 className="text-4xl font-bold text-center text-purple-300 mb-8">Contact Form</h2>
+      <div
+        className="max-w-xl mx-auto 
+        bg-gray-900/40 backdrop-blur-xl border border-white/10
+        rounded-3xl p-10 
+        shadow-[0_4px_30px_rgba(0,0,0,0.6)] 
+        hover:shadow-[0_8px_40px_rgba(0,0,0,0.8)] 
+        transition-all duration-500"
+      >
+        <h2 className="text-4xl font-bold text-center text-purple-300 mb-8">
+          Contact Form
+        </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
@@ -62,7 +71,11 @@ const Form = () => {
             placeholder="Your Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-900 bg-opacity-60 text-gray-200 placeholder-gray-400 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            className="w-full px-4 py-3 
+              bg-gray-800/60 backdrop-blur-sm 
+              text-gray-200 placeholder-gray-400 
+              rounded-xl border border-white/10
+              focus:ring-2 focus:ring-purple-400 focus:outline-none"
           />
           <input
             type="email"
@@ -70,14 +83,22 @@ const Form = () => {
             placeholder="Your Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-900 bg-opacity-60 text-gray-200 placeholder-gray-400 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            className="w-full px-4 py-3 
+              bg-gray-800/60 backdrop-blur-sm 
+              text-gray-200 placeholder-gray-400 
+              rounded-xl border border-white/10
+              focus:ring-2 focus:ring-purple-400 focus:outline-none"
           />
           <textarea
             id="message"
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-3 h-32 bg-gray-900 bg-opacity-60 text-gray-200 placeholder-gray-400 rounded-xl focus:ring-2 focus:ring-purple-400 focus:outline-none resize-none"
+            className="w-full px-4 py-3 h-32 
+              bg-gray-800/60 backdrop-blur-sm 
+              text-gray-200 placeholder-gray-400 
+              rounded-xl border border-white/10
+              focus:ring-2 focus:ring-purple-400 focus:outline-none resize-none"
           />
 
           <button
@@ -89,8 +110,15 @@ const Form = () => {
         </form>
 
         {submitted && (
-          <div className="mt-8 p-4 bg-green-700 bg-opacity-80 text-white text-center rounded-xl shadow-md animate-fade-in">
-            <h3 className="text-xl font-semibold">Form submitted successfully!</h3>
+          <div
+            className="mt-8 p-4 
+            bg-green-700/70 backdrop-blur-sm 
+            text-white text-center 
+            rounded-xl shadow-md animate-fade-in"
+          >
+            <h3 className="text-xl font-semibold">
+              Form submitted successfully!
+            </h3>
           </div>
         )}
       </div>
