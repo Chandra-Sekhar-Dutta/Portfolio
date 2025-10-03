@@ -2,7 +2,7 @@ import React from 'react';
 import IOT from '../assets/IOT.jpg';
 import chat from '../assets/chat.png';
 import CPPChat from '../assets/CPPChat.png';
-import task from '../assets/task.png';
+import Terminal from '../assets/Terminal.png';
 import Resume from '../assets/Resume.jpeg';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -17,8 +17,17 @@ const projects = [
     image: Resume,
     link: 'https://github.com/Chandra-Sekhar-Dutta/AI-Powered-Resume-Generator',
   },
-  {
+    {
     id: 2,
+    title: 'AI-POWERED PYTHON TERMNINAL',
+    description: 'A fully functioning command terminal built in Python that mimics the behavior of a real system terminal. This terminal supports standard file operations, directory navigation, system monitoring, and includes an AI-powered natural language interface.',
+    topics: ['CLI Interface', 'Web InterfaceT', 'AI Interface'],
+    technologies: ['Python', 'Flask', 'Natural Language Processing', 'psutil' ],
+    image: Terminal,
+    link: 'https://github.com/Chandra-Sekhar-Dutta/Python-Terminal',
+  },
+  {
+    id: 3,
     title: 'IOT-BASED SMART IRRIGATION SYSTEM',
     description:
       'An Arduino-powered IoT solution for real-time soil moisture monitoring and automatic watering, with SQL-based data logging and Python visualization.',
@@ -28,7 +37,7 @@ const projects = [
     link: 'https://github.com/Chandra-Sekhar-Dutta/IOT-Research-Papers-and-Project',
   },
   {
-    id: 3,
+    id: 4,
     title: 'ONLINE CHATTING APPLICATION',
     description: 'Real-time web chat using Node.js and Socket.IO with a clean UI and instant messaging.',
     topics: ['REAL-TIME CHAT', 'SOCKET.IO', 'NODE.JS'],
@@ -37,7 +46,7 @@ const projects = [
     link: 'https://github.com/Chandra-Sekhar-Dutta/OnlineChat',
   },
   {
-    id: 4,
+    id: 5,
     title: 'C++ TCP CHAT APPLICATION (CLIENT-SERVER)',
     description:
       'Multi-threaded C++ Winsock-based chat application enabling real-time text exchange using TCP sockets.',
@@ -45,16 +54,7 @@ const projects = [
     technologies: ['C++', 'Winsock'],
     image: CPPChat,
     link: 'https://github.com/Chandra-Sekhar-Dutta/Chatting-App-in-Cpp',
-  },
-  {
-    id: 5,
-    title: 'TASK MANAGEMENT WEB APPLICATION',
-    description: 'A full-stack task tracker and scheduler built with Express.js, SQL, and responsive UI.',
-    topics: ['FULL STACK', 'WEB DEVELOPMENT', 'TASK MANAGEMENT'],
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express.js', 'SQL'],
-    image: task,
-    link: 'https://github.com/Chandra-Sekhar-Dutta/Task-Manager',
-  },
+  }
 ];
 
 const ProjectCard = () => {
