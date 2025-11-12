@@ -61,7 +61,7 @@ const ProjectCard = () => {
   return (
     <div className="relative px-4 py-10 md:py-8">
       {/* Heading */}
-      <h3 className="text-3xl md:text-2xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-16 animate-fade-in tracking-tight">
+      <h3 className="text-3xl md:text-2xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400 mb-16 animate-fade-in tracking-tight">
         From IoT to full-stack—building tech that talks, thinks, and solves.
       </h3>
 

@@ -8,7 +8,7 @@ const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-gradient-to-br from-purple-800 via-indigo-800 to-black text-white text-center py-12 md:py-20 px-4 min-h-screen flex items-center justify-center">
+    <section className="bg-linear-to-br from-purple-800 via-indigo-800 to-black text-white text-center py-12 md:py-20 px-4 min-h-screen flex items-center justify-center">
       <div className="max-w-4xl mx-auto">
         {/* Profile Image */}
         <img
@@ -61,7 +61,7 @@ const Hero = () => {
           </div>
 
           <div className="flex items-center gap-4 bg-gray-900 bg-opacity-50 py-2 px-6 rounded-full">
-            <span className="text-lg font-semibold text-gray-100 bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+            <span className="text-lg font-semibold text-gray-100 bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400">
               Connect with me:
             </span>
             <a
