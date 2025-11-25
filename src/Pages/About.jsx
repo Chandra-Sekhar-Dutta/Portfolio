@@ -47,7 +47,7 @@ const About = () => {
           <h1 className="text-4xl font-bold mb-6 text-purple-300">About Me</h1>
           <p className="text-lg leading-relaxed mb-8 text-gray-300">
             Hello! I'm <span className="font-semibold text-purple-400">Chandra Sekhar Dutta</span>, a passionate Computer Science undergraduate at SRMIST Ramapuram with a deep interest in <span className="font-semibold text-purple-400">IoT and Full-Stack Development</span>.
-            I have maintained my a CGPA of 9.29 while actively contributing to the tech world. I love building real-world solutions that make an impact and constantly seek to expand my knowledge through hands-on learning.
+            I have maintained my a CGPA of 9.35 while actively contributing to the tech world. I love building real-world solutions that make an impact and constantly seek to expand my knowledge through hands-on learning.
           </p>
 
           {/* Dark Translucent Technical Skills */}
