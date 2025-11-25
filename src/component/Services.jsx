@@ -1,4 +1,3 @@
-// src/component/Services.jsx
 import React from 'react'
 import { motion } from 'framer-motion'
 
@@ -35,8 +34,8 @@ const Services = () => {
           >
             <motion.div 
               className="text-4xl mb-3 text-gray-300"
-              whileHover={{ scale: 1.2, rotate: 360, color: "#c084fc" }}
-              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.2, color: "#c084fc" }}
+              transition={{ duration: 0.3 }}
             >
               {s.icon}
             </motion.div>
