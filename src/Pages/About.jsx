@@ -1,7 +1,8 @@
 // src/pages/About.jsx
 import React, { useEffect, useState } from 'react'
-import { FaReact, FaNodeJs, FaDatabase, FaGithub } from 'react-icons/fa'
-import { SiJavascript, SiPython, SiMongodb, SiMysql, SiCplusplus } from 'react-icons/si'
+import { FaReact, FaNodeJs, FaDatabase, FaGithub, FaHtml5, FaCss3, FaConnectdevelop } from 'react-icons/fa'
+import { SiJavascript, SiPython, SiMongodb, SiMysql, SiCplusplus, SiSocketdotio, SiGit, SiPostman, SiArduino, SiStrapi, SiReplit, SiVercel, SiCloudflare, SiRender } from 'react-icons/si'
+import { VscCode } from 'react-icons/vsc'
 import { motion } from 'framer-motion'
 import Services from '../component/Services'
 import Research from '../component/Research'
@@ -93,7 +94,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <h3 className="text-purple-300 text-xl mb-4">#skills</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
                   <motion.div 
                     className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
@@ -104,9 +105,9 @@ const About = () => {
                   >
                     <h4 className="text-xs text-gray-400 mb-2 uppercase">Languages</h4>
                     <ul className="text-sm text-gray-300 space-y-1">
-                      <li className="flex items-center gap-2"><SiJavascript /> JavaScript</li>
-                      <li className="flex items-center gap-2"><SiPython /> Python</li>
                       <li className="flex items-center gap-2"><SiCplusplus /> C++</li>
+                      <li className="flex items-center gap-2"><SiPython /> Python</li>
+                      <li className="flex items-center gap-2"><SiJavascript /> JavaScript</li>
                     </ul>
                   </motion.div>
 
@@ -120,6 +121,9 @@ const About = () => {
                     <h4 className="text-xs text-gray-400 mb-2 uppercase">Frontend</h4>
                     <ul className="text-sm text-gray-300 space-y-1">
                       <li className="flex items-center gap-2"><FaReact /> React</li>
+                      <li className='flex items-center gap-2'><FaHtml5 /> Html</li>
+                      <li className='flex items-center gap-2'><FaCss3 /> CSS</li>
+                      <li className='flex items-center gap-2'><SiJavascript /> JavaScript</li>
                     </ul>
                   </motion.div>
 
@@ -133,6 +137,9 @@ const About = () => {
                     <h4 className="text-xs text-gray-400 mb-2 uppercase">Backend</h4>
                     <ul className="text-sm text-gray-300 space-y-1">
                       <li className="flex items-center gap-2"><FaNodeJs /> Node.js</li>
+                      <li className="flex items-center gap-2"><FaDatabase /> Express.js</li>
+                      <li className='flex items-center gap-2'><FaConnectdevelop /> WebSocket</li>
+                      <li className='flex items-center gap-2'><SiSocketdotio /> Socket.IO</li>
                     </ul>
                   </motion.div>
 
@@ -147,6 +154,40 @@ const About = () => {
                     <ul className="text-sm text-gray-300 space-y-1">
                       <li className="flex items-center gap-2"><SiMysql /> MySQL</li>
                       <li className="flex items-center gap-2"><SiMongodb /> MongoDB</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.9 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Tools</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><SiGit /> Git</li>
+                      <li className="flex items-center gap-2"><VscCode /> VS Code</li>
+                      <li className="flex items-center gap-2"><VscCode /> Visual Studio</li>
+                      <li className="flex items-center gap-2"><SiPostman /> Postman</li>
+                      <li className="flex items-center gap-2"><SiArduino /> Arduino IDE</li>
+                      <li className="flex items-center gap-2"><SiStrapi /> Strapi CMS</li>
+                      <li className="flex items-center gap-2"><SiReplit /> Replit</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 1.0 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Cloud</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><SiVercel /> Vercel</li>
+                      <li className="flex items-center gap-2"><SiCloudflare /> Cloudflare</li>
+                      <li className="flex items-center gap-2"><SiRender /> Render</li>
                     </ul>
                   </motion.div>
 
