@@ -1,172 +1,192 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { FaArrowUp } from 'react-icons/fa';
+
 import IOT from '../assets/IOT.jpg';
 import chat from '../assets/chat.png';
 import CPPChat from '../assets/CPPChat.png';
 import Terminal from '../assets/Terminal.png';
 import Resume from '../assets/Resume.jpeg';
-import { FaArrowUp } from 'react-icons/fa';
 
 const projects = [
   {
     id: 1,
     title: 'AI Generated Resume Builder',
     description:
-      'A full-stack web application for building, editing, and downloading professional resumes. Powered by AI for content generation.',
-    topics: ['Google GEMINI', 'RESUME BUILDER', 'WEB DEVELOPMENT'],
-    technologies: ['React', 'Node.js', 'Strapi', 'Tailwind CSS', 'Clerk Auth', 'PDF Generation', 'Google Gemini'],
+      'A full-stack web application for building, editing, and downloading AI-generated professional resumes.',
+    topics: ['AI', 'Resume Builder', 'Web Dev'],
+    technologies: ['React', 'Node.js', 'Strapi', 'Tailwind'],
     image: Resume,
     link: 'https://github.com/Chandra-Sekhar-Dutta/AI-Powered-Resume-Generator',
   },
-    {
+  {
     id: 2,
-    title: 'AI-POWERED PYTHON TERMNINAL',
-    description: 'A fully functioning command terminal built in Python that mimics the behavior of a real system terminal. This terminal supports standard file operations, directory navigation, system monitoring, and includes an AI-powered natural language interface.',
-    topics: ['CLI Interface', 'Web InterfaceT', 'AI Interface'],
-    technologies: ['Python', 'Flask', 'Natural Language Processing', 'psutil' ],
+    title: 'AI-Powered Python Terminal',
+    description:
+      'A Linux-like terminal built in Python with NLP-based command interpretation.',
+    topics: ['CLI', 'AI Interface'],
+    technologies: ['Python', 'Flask', 'NLP'],
     image: Terminal,
     link: 'https://github.com/Chandra-Sekhar-Dutta/Python-Terminal',
   },
   {
     id: 3,
-    title: 'IOT-BASED SMART IRRIGATION SYSTEM',
+    title: 'IoT Smart Irrigation System',
     description:
-      'An Arduino-powered IoT solution for real-time soil moisture monitoring and automatic watering, with SQL-based data logging and Python visualization.',
-    topics: ['IOT', 'ARDUINO', 'SQL', 'DATA VISUALIZATION'],
-    technologies: ['Arduino IDE', 'SQL', 'Python'],
+      'Arduino-based smart irrigation with real-time moisture monitoring and SQL logging.',
+    topics: ['IoT', 'Sensors'],
+    technologies: ['Arduino', 'SQL', 'Python'],
     image: IOT,
     link: 'https://github.com/Chandra-Sekhar-Dutta/IOT-Research-Papers-and-Project',
   },
   {
     id: 4,
-    title: 'ONLINE CHATTING APPLICATION',
-    description: 'Real-time web chat using Node.js and Socket.IO with a clean UI and instant messaging.',
-    topics: ['REAL-TIME CHAT', 'SOCKET.IO', 'NODE.JS'],
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Socket.IO'],
+    title: 'Real-Time Chat App',
+    description: 'A real-time chat platform using Node.js and Socket.IO.',
+    topics: ['Chat', 'Realtime'],
+    technologies: ['Node.js', 'Socket.IO'],
     image: chat,
     link: 'https://github.com/Chandra-Sekhar-Dutta/OnlineChat',
   },
   {
     id: 5,
-    title: 'C++ TCP CHAT APPLICATION (CLIENT-SERVER)',
-    description:
-      'Multi-threaded C++ Winsock-based chat application enabling real-time text exchange using TCP sockets.',
-    topics: ['C++', 'TCP CHAT', 'WINSOCK', 'MULTI-THREADING'],
+    title: 'C++ TCP Chat App',
+    description: 'Multi-threaded TCP chat using Winsock in C++.',
+    topics: ['C++', 'Networking'],
     technologies: ['C++', 'Winsock'],
     image: CPPChat,
     link: 'https://github.com/Chandra-Sekhar-Dutta/Chatting-App-in-Cpp',
-  }
+  },
 ];
 
-const ProjectCard = () => {
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = (direction = 'left') => ({
+  hidden: { opacity: 0, x: direction === 'left' ? -60 : 60, scale: 0.98 },
+  show: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+});
+
+export default function ProjectCard() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-120px' });
+
   return (
-    <div className="relative px-4 py-10 md:py-8">
-      {/* Heading */}
-      <h3 className="text-3xl md:text-2xl font-extrabold text-center text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400 mb-16 animate-fade-in tracking-tight">
-        From IoT to full-stack—building tech that talks, thinks, and solves.
-      </h3>
-
-      {/* Vertical line */}
-      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-[calc(100%-10rem)] w-1 bg-gray-700/60 backdrop-blur-sm" />
-
-      <div className="space-y-28 max-w-6xl mx-auto">
-        {projects.map((project, index) => {
-          const isLeft = index % 2 === 0;
-
-          return (
-            <div
-              key={project.id}
-              className={`relative flex flex-col md:flex-row items-center ${
-                isLeft ? 'md:justify-start' : 'md:justify-end'
-              } animate-fade-in delay-${(index + 1) * 100}`}
-            >
-              {/* Connector dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                <div className="w-6 h-6 bg-gray-800/80 rounded-full border-4 border-gray-900 shadow-lg backdrop-blur-md" />
-              </div>
-
-              {/* Dark Glassmorphic Card */}
-              <div
-                className={`w-full md:w-[45%] p-8 rounded-2xl relative transition-all duration-300
-                  ${isLeft ? 'md:mr-auto' : 'md:ml-auto'}
-                  bg-gray-900/50 backdrop-blur-xl border border-white/10 
-                  shadow-[0_4px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.8)] hover:scale-[1.02]`}
-              >
-                {/* Image with Hover Overlay */}
-                <div className="relative group">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-56 object-cover rounded-lg mb-6 border border-gray-700/50 transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"
-                  >
-                    <span className="text-white font-semibold px-4 py-2 bg-gray-800/80 rounded-full">
-                      View Project
-                    </span>
-                  </a>
-                </div>
-
-                <h3 className="text-xl md:text-2xl font-bold text-purple-300 mb-3 tracking-tight">{project.title}</h3>
-                <p className="text-gray-300 mb-4 leading-relaxed text-base md:text-lg">{project.description}</p>
-
-                <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-400 mb-2">Topics:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.topics.map((topic, i) => (
-                      <span
-                        key={i}
-                        className="bg-gray-800/70 text-purple-300 px-3 py-1 text-xs rounded-full border border-purple-500/30"
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-400 mb-2">Technologies:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="bg-gray-800/70 text-cyan-300 px-3 py-1 text-xs rounded-full border border-cyan-500/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-          );
-        })}
+    <div className="relative px-4 py-8" ref={ref}>
+      {/* Section heading */}
+      <div className="mb-10 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div className="md:col-span-3">
+          <div className="text-xs text-gray-400 font-mono">#complete-apps</div>
+        </div>
       </div>
 
-      {/* Back to Top Button */}
-      <div className="mt-16 flex justify-center animate-fade-in delay-500">
-        <a
-          href="#top"
-          className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 shadow-md hover:shadow-lg"
-        >
-          <FaArrowUp className="text-lg" />
-          Back to Top
+      {/* Relative wrapper so timeline height matches content */}
+      <div className="relative max-w-6xl mx-auto">
+
+        {/* TIMELINE - corrected version */}
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: inView ? '100%' : 0 }}
+          transition={{ duration: 1.6, ease: 'easeInOut' }}
+          className="hidden md:block absolute left-1/2 top-0.2 w-[2px] bg-gray-800"
+          style={{ transform: 'translateX(-50%)' }}
+        />
+
+        {/* PROJECTS WITH ANIMATION */}
+        <motion.div variants={containerVariants} initial="hidden" animate={inView ? 'show' : 'hidden'}>
+          <div className="space-y-20">
+            {projects.map((project, idx) => {
+              const isLeft = idx % 2 === 0;
+              const direction = isLeft ? 'left' : 'right';
+
+              return (
+                <motion.div
+                  key={project.id}
+                  custom={direction}
+                  variants={itemVariants(direction)}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  {/* Circle marker */}
+                  <div className="absolute left-1/2 -translate-x-1/2 z-20">
+                    <motion.span
+                      initial={{ scale: 0.6, opacity: 0.6 }}
+                      animate={{ scale: [0.8, 1.05, 0.95], opacity: [0.6, 1, 0.9] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="block w-5 h-5 bg-purple-500 rounded-full border-2 border-[#0b0c10]"
+                    />
+                  </div>
+
+                  {/* Left card */}
+                  <div className={`md:w-5/12 w-full ${isLeft ? 'md:pr-8 md:order-1' : 'md:pl-8 md:order-2'} z-10`}>
+                    <div className="border border-gray-700 rounded-sm p-4 bg-[#0d0d12]">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-xs text-gray-400 font-mono uppercase tracking-wider">Project</div>
+                        <div className="text-xs text-gray-400 font-mono">#{project.id}</div>
+                      </div>
+
+                      <h3 className="text-lg font-semibold text-purple-300 mb-2 tracking-tight font-mono">{project.title}</h3>
+
+                      <p className="text-sm text-gray-300 mb-3 leading-relaxed">{project.description}</p>
+
+                      <div className="flex gap-2 flex-wrap mb-3">
+                        {project.topics.map((t, i) => (
+                          <span key={i} className="text-xs px-2 py-1 border border-gray-700 rounded bg-[#0b0c10] text-purple-300 font-mono">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-gray-400 font-mono">{project.technologies.slice(0, 3).join(', ')}</div>
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-xs text-cyan-300 font-semibold underline"
+                        >
+                          GitHub
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:w-2/12 hidden md:block"></div>
+
+                  {/* Right project image */}
+                  <div className={`md:w-5/12 w-full ${isLeft ? 'md:pl-8 md:order-2' : 'md:pr-8 md:order-1'} z-10`}>
+                    <div className="border border-gray-800 rounded p-2 bg-[#0d0d10]">
+                      <div className="relative overflow-hidden rounded-sm">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-44 object-cover rounded-sm border border-gray-700/40"
+                        />
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="absolute left-3 bottom-3 text-xs bg-[#0b0c10] border border-purple-700 text-purple-300 px-3 py-1 rounded"
+                        >
+                          View Project
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Back to top button */}
+      <div className="mt-16 flex justify-center">
+        <a href="#projects" className="inline-flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full">
+          <FaArrowUp /> Back to Top
         </a>
       </div>
     </div>
   );
-};
-
-export default ProjectCard;
+}

@@ -1,92 +1,111 @@
-import React from 'react';
-import profilePic from '../assets/profilePic.jpg';
-import { useNavigate } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaReact, FaNodeJs, FaPython, FaDatabase, FaArrowDown } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiCplusplus } from 'react-icons/si';
+import React from "react";
+import { motion } from "framer-motion";
+import profilePic from "../assets/profilePic.jpg";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
-  const navigate = useNavigate();
-
   return (
-    <section className="bg-linear-to-br from-purple-800 via-indigo-800 to-black text-white text-center py-12 md:py-20 px-4 min-h-screen flex items-center justify-center">
-      <div className="max-w-4xl mx-auto">
+    <section className="relative min-h-screen bg-[#0d0d15] text-gray-200 overflow-hidden">
+      
+      {/* Floating Social Icons */}
+      <motion.div
+        initial={{ x: -40, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="hidden md:flex flex-col gap-6 absolute left-8 top-1/3 text-gray-400"
+      >
+        {[FaGithub, FaLinkedin].map((Icon, i) => (
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.2, y: -4, color: "#c084fc" }}
+            className="cursor-pointer"
+          >
+            <Icon className="text-xl" />
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 flex flex-col md:flex-row items-center">
+        
+        {/* Text Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className="flex-1 space-y-6"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Hi, I'm 
+            <span className="text-purple-400"> Chandra Sekhar Dutta</span>
+          </h1>
+
+          <p className="text-lg text-gray-300 max-w-xl">
+            A passionate Computer Science student specializing in MERN Stack and IoT applications.
+          </p>
+
+          <p className="max-w-xl text-gray-400">
+            Passionate Software Engineer skilled in C++, Python, and full-stack development. 
+            Experienced in network programming, database management, and real-time systems.
+          </p>
+
+          {/* Resume Button */}
+          <motion.a
+            href="https://drive.google.com/uc?export=download&id=1UhnXSXMgK_QG4wYFJPJPqyAbBiZglbNd"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168,85,247,0.4)" }}
+            className="inline-block mt-4 px-8 py-3 border border-purple-500 text-purple-300 
+                       hover:bg-purple-600/20 transition rounded"
+          >
+            Download Resume
+          </motion.a>
+        </motion.div>
+
         {/* Profile Image */}
-        <img
-          className="mx-auto mb-8 w-32 h-32 md:w-32 md:h-45 rounded-full object-cover shadow-2xl ring-4 ring-purple-400 transform transition-transform duration-300 hover:scale-105"
-          src={profilePic}
-          alt="Profile of Chandra Sekhar Dutta"
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="flex-1 flex justify-center mt-10 md:mt-0 relative"
+        >
+          <motion.img
+            src={profilePic}
+            alt=""
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
+            className="w-72 md:w-96 rounded-xl shadow-lg opacity-90"
+          />
 
-        {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight animate-fade-in">
-          Hi, I'm Chandra Sekhar Dutta
-        </h1>
+          {/* Animated Geometric Shapes */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: 1, rotate: 360 }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute -left-10 top-10 w-28 h-28 border border-purple-500/30 rounded-lg"
+          />
 
-        {/* Subtitle */}
-        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-6 leading-relaxed animate-fade-in delay-100">
-          A passionate Computer Science student specializing in MERN Stack and IoT applications.
-        </p>
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: 1, rotate: -360 }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="absolute left-5 top-24 w-20 h-20 border border-purple-500/20 rounded-lg"
+          />
+        </motion.div>
 
-        {/* Description */}
-        <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in delay-200">
-          Passionate Software Engineer skilled in C++, Python, and full-stack development, seeking to build efficient, scalable applications. Experienced in network programming, database management, and real-time systems, with a strong problem-solving mindset. Looking for opportunities to contribute to innovative projects while continuously growing in a dynamic environment.
-        </p>
-
-        {/* Tech Stack */}
-        <div className="mb-10 animate-fade-in delay-300">
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-100 mb-4">Tech Stack</h2>
-          <div className="flex justify-center flex-wrap gap-6 md:gap-8">
-            <SiMongodb className="text-5xl text-green-500 hover:text-green-400 transition duration-300" title="MongoDB" />
-            <SiExpress className="text-5xl text-gray-300 hover:text-gray-200 transition duration-300" title="Express.js" />
-            <FaReact className="text-5xl text-cyan-400 hover:text-cyan-300 transition duration-300" title="React" />
-            <FaNodeJs className="text-5xl text-green-600 hover:text-green-500 transition duration-300" title="Node.js" />
-            <SiCplusplus className="text-5xl text-blue-600 hover:text-blue-500 transition duration-300" title="C++" />
-            <FaPython className="text-5xl text-yellow-400 hover:text-yellow-300 transition duration-300" title="Python" />
-            <FaDatabase className="text-5xl text-purple-400 hover:text-purple-300 transition duration-300" title="Database" />
-          </div>
-        </div>
-
-        {/* Social Media and Resume Buttons */}
-        <div className="flex flex-col items-center gap-6 animate-fade-in delay-400">
-          <div className="flex justify-center gap-6 items-center">
-            <a
-              href="https://drive.google.com/uc?export=download&id=1UhnXSXMgK_QG4wYFJPJPqyAbBiZglbNd"
-              download="Chandra_Sekhar_Dutta_Resume.pdf"
-              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg"
-            >
-              Download Resume
-            </a>
-
-
-          </div>
-
-          <div className="flex items-center gap-4 bg-gray-900 bg-opacity-50 py-2 px-6 rounded-full">
-            <span className="text-lg font-semibold text-gray-100 bg-clip-text bg-linear-to-r from-purple-400 to-cyan-400">
-              Connect with me:
-            </span>
-            <a
-              href="https://github.com/Chandra-Sekhar-Dutta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition duration-300 relative group"
-              aria-label="GitHub Profile"
-            >
-              <FaGithub className="text-4xl" />
-              <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-10 left-1/2 transform -translate-x-1/2">GitHub</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/chandra-sekhar-dutta-578595234/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition duration-300 relative group"
-              aria-label="LinkedIn Profile"
-            >
-              <FaLinkedin className="text-4xl" />
-              <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-10 left-1/2 transform -translate-x-1/2">LinkedIn</span>
-            </a>
-          </div>
-        </div>
       </div>
+
+      {/* Quote Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-5xl mx-auto px-6 mt-20"
+      >
+        <div className="border border-gray-700 p-6 rounded relative hover:border-purple-500/50 transition">
+          <p className="text-lg">“Talk is cheap. Show me the code.”</p>
+          <p className="text-right mt-3 text-gray-400">- Linus Torvalds</p>
+        </div>
+      </motion.div>
+
     </section>
   );
 };

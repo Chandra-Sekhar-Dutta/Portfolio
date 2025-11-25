@@ -3,9 +3,15 @@ import ProjectCard from '../component/ProjectCard';
 
 const Projects = () => {
   return (
-    <section className="bg-gradient-to-br from-purple-800 via-indigo-800 to-black text-white py-16 px-4">
+    <section id="projects" className="bg-[#0b0c10] text-gray-200 min-h-screen py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center text-purple-300">My Projects</h1>
+        <header className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 tracking-tight">
+            /projects
+          </h1>
+          <p className="mt-3 text-sm text-gray-400">List of my projects</p>
+        </header>
+
         <ProjectCard />
       </div>
     </section>

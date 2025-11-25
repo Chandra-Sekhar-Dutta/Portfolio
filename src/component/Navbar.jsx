@@ -1,59 +1,113 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinkClass = ({ isActive }) =>
-    `block text-sm md:text-base font-semibold px-3 py-2 transition duration-300 
-     hover:text-purple-300 ${isActive ? "text-purple-400" : "text-white"}`;
+    `relative px-3 py-2 tracking-wider text-[13px] uppercase transition 
+     ${isActive ? "text-purple-400" : "text-gray-300"} 
+     hover:text-purple-300`;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="bg-gradient-to-r from-purple-950/80 via-indigo-900/80 to-black/80 backdrop-blur-lg shadow-xl sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-        
-        {/* Hide the name on small screens */}
-        <div
-          className="hidden md:block text-xl md:text-2xl font-bold text-white tracking-wide cursor-pointer hover:text-purple-300 transition duration-300"
+    <motion.nav
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className={`w-full sticky top-0 z-50 border-b border-purple-900/20 
+        ${scrolled ? "bg-[#0f0f16]/80 backdrop-blur-lg" : "bg-[#0f0f16]"}`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        {/* Logo */}
+        <motion.div
+          whileHover={{ scale: 1.05, color: "#c084fc" }}
+          className="text-lg font-semibold text-gray-200 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Chandra Sekhar Dutta
-          </span>
-        </div>
+          <span className="text-purple-400">Chandra Sekhar Dutta</span>
+        </motion.div>
 
-        {/* Desktop menu */}
-        <ul className="hidden md:flex gap-6 lg:gap-8 items-center">
-          <NavLink to="/" className={navLinkClass}>Home</NavLink>
-          <NavLink to="/about" className={navLinkClass}>About</NavLink>
-          <NavLink to="/projects" className={navLinkClass}>Projects</NavLink>
-          <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-6 items-center">
+          {["/", "/about", "/projects", "/contact"].map((path, i) => (
+            <NavLink key={i} to={path} className={navLinkClass}>
+              <span className="hover-underline-animation">
+                {path === "/" ? "Home" : path.slice(1)}
+              </span>
+            </NavLink>
+          ))}
         </ul>
 
-        {/* Hamburger (visible only on small screens) */}
+        {/* Mobile Menu Button */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white focus:outline-none"
-          aria-label="Toggle Menu"
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-gray-200"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {open ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-gradient-to-r from-purple-950/90 via-indigo-900/90 to-black/90 backdrop-blur-xl border-t border-purple-700/40">
-          <ul className="flex flex-col items-center space-y-4 py-6">
-            <NavLink to="/" className={navLinkClass} onClick={() => setMenuOpen(false)}>Home</NavLink>
-            <NavLink to="/about" className={navLinkClass} onClick={() => setMenuOpen(false)}>About</NavLink>
-            <NavLink to="/projects" className={navLinkClass} onClick={() => setMenuOpen(false)}>Projects</NavLink>
-            <NavLink to="/contact" className={navLinkClass} onClick={() => setMenuOpen(false)}>Contact</NavLink>
-          </ul>
-        </div>
-      )}
-    </nav>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#0f0f16] border-t border-purple-900/20"
+          >
+            <ul className="flex flex-col items-center py-6 space-y-4">
+              {["/", "/about", "/projects", "/contact"].map((path, i) => (
+                <NavLink
+                  key={i}
+                  to={path}
+                  className={navLinkClass}
+                  onClick={() => setOpen(false)}
+                >
+                  {path === "/" ? "Home" : path.slice(1)}
+                </NavLink>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Underline Hover Animation */}
+      <style>
+        {`
+        .hover-underline-animation {
+          position: relative;
+        }
+        .hover-underline-animation::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          width: 0%;
+          height: 2px;
+          background: #c084fc;
+          transition: width 0.3s ease;
+        }
+        .hover-underline-animation:hover::after {
+          width: 100%;
+        }
+        `}
+      </style>
+    </motion.nav>
   );
 };
 

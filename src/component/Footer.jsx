@@ -1,46 +1,66 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
+import React from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-300 py-8 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 md:flex-row md:justify-between animate-fade-in">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="bg-[#0e0e15] text-gray-400 border-t border-purple-900/20 py-12 px-6"
+    >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        
+        {/* Left */}
+        <motion.div initial={{ x: -30, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+          <h2 className="text-gray-200 font-semibold">Chandra Sekhar Dutta</h2>
+          <p className="mt-2 text-sm">Full Stack Developer and IoT Developer</p>
+        </motion.div>
 
-        {/* Text */}
-        <p className="text-sm text-center md:text-left">
-          © {new Date().getFullYear()} <span className="text-purple-300 font-semibold">Chandra Sekhar Dutta</span>. All rights reserved.
-        </p>
-
-        {/* Icons */}
-  <div className="flex gap-6 items-center">
-          {[
-            {
-              icon: <FaGithub size={24} />,
-              href: "https://github.com/Chandra-Sekhar-Dutta",
-              label: "GitHub",
-            },
-            {
-              icon: <FaLinkedin size={24} />,
-              href: "https://www.linkedin.com/in/chandra-sekhar-dutta-578595234/",
-              label: "LinkedIn",
-            },
-            {
-              icon: <FaEnvelope size={24} />,
-              href: "mailto:chandrasekhardutta3@gmail.com",
-              label: "Email",
-            }
-          ].map(({ icon, href, label }, idx) => (
-            <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="relative group text-gray-300 hover:text-purple-300 transition-transform transform hover:scale-110 duration-300" aria-label={label}>
-              {icon}
-              <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:flex items-center text-xs bg-gray-900 text-white px-3 py-1 rounded shadow-lg z-10">
-                {label}
-              </span>
-            </a>
-          ))}
-        </div>
+        {/* Right */}
+        <motion.div
+          initial={{ x: 30, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          className="flex flex-col md:items-end"
+        >
+          <h3 className="text-gray-200 text-lg mb-3">Media</h3>
+          
+          <div className="flex gap-6 text-xl">
+            {[ 
+              { icon: FaGithub, link: "https://github.com/Chandra-Sekhar-Dutta" },
+              { icon: FaLinkedin, link: "https://www.linkedin.com/in/chandra-sekhar-dutta-578595234/" },
+              { icon: FaEnvelope, link: "mailto:chandrasekhardutta3@gmail.com" }
+            ].map((item, i) => (
+              <motion.a
+                key={i}
+                href={item.link}
+                target="_blank"
+                whileHover={{
+                  scale: 1.2,
+                  color: "#c084fc",
+                  textShadow: "0px 0px 10px rgba(192,132,252,0.8)"
+                }}
+                className="cursor-pointer"
+              >
+                <item.icon />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </footer>
+
+      {/* Bottom */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="mt-10 text-center text-xs text-gray-600"
+      >
+        © {new Date().getFullYear()} Chandra Sekhar Dutta. Made by Chandra.
+      </motion.p>
+    </motion.footer>
   );
 };
 

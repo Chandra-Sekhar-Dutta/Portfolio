@@ -1,14 +1,14 @@
+// src/pages/About.jsx
 import React, { useEffect, useState } from 'react'
-
-import skills from '../assets/skills.svg'
-import highlights from '../assets/highlights.png'
+import { FaReact, FaNodeJs, FaDatabase, FaGithub } from 'react-icons/fa'
+import { SiJavascript, SiPython, SiMongodb, SiMysql, SiCplusplus } from 'react-icons/si'
+import { motion } from 'framer-motion'
 import Services from '../component/Services'
 import Research from '../component/Research'
 
 const About = () => {
   const [githubStats, setGithubStats] = useState({})
   const [leetcodeStats, setLeetcodeStats] = useState({})
-  const [codechefStats, setCodechefStats] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +22,9 @@ const About = () => {
           Location: githubData.location || 'N/A',
         })
 
-        const leetcodeResponse = await fetch('https://leetcode-stats-api.herokuapp.com/ChandraSekharDutta')
+        const leetcodeResponse = await fetch(
+          'https://leetcode-stats-api.herokuapp.com/ChandraSekharDutta'
+        )
         const leetcodeData = await leetcodeResponse.json()
         setLeetcodeStats({
           'Total Solved': leetcodeData.totalSolved,
@@ -41,103 +43,208 @@ const About = () => {
   }, [])
 
   return (
-    <>
-      <section className="bg-gradient-to-br from-purple-800 via-indigo-800 to-black text-white text-center py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-6 text-purple-300">About Me</h1>
-          <p className="text-lg leading-relaxed mb-8 text-gray-300">
-            Hello! I'm <span className="font-semibold text-purple-400">Chandra Sekhar Dutta</span>, a passionate Computer Science undergraduate at SRMIST Ramapuram with a deep interest in <span className="font-semibold text-purple-400">IoT and Full-Stack Development</span>.
-            I have maintained my a CGPA of 9.35 while actively contributing to the tech world. I love building real-world solutions that make an impact and constantly seek to expand my knowledge through hands-on learning.
-          </p>
+    <div className="min-h-screen bg-[#0b0c10] text-gray-200 font-mono">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 px-6 py-12">
 
-          {/* Dark Translucent Technical Skills */}
-          <div className="text-left rounded-xl shadow-xl p-8
-            bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-purple-400 hover:shadow-purple-500/30 transition">
-            <h2 className="text-2xl font-semibold mb-4 text-purple-300 flex items-center gap-3">
-              <img src={skills} alt="skills icon" className="w-7 h-7" />
-              Technical Skills
-            </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-200">
-              <li><span className="font-medium text-white">Languages:</span> C++, Python, JavaScript, SQL</li>
-              <li><span className="font-medium text-white">Frontend:</span> React.js, HTML5, CSS3, Tailwind CSS</li>
-              <li><span className="font-medium text-white">Backend:</span> Node.js, Express.js</li>
-              <li><span className="font-medium text-white">Database:</span> MongoDB, MySQL</li>
-              <li><span className="font-medium text-white">Tools & Platforms:</span> Git, GitHub, Postman, Vercel</li>
-              <li><span className="font-medium text-white">IoT:</span> Arduino and Arduino IDE</li>
-            </ul>
-          </div>
+        {/* LEFT SIDEBAR */}
+        <aside className="hidden md:flex flex-col items-center w-16">
+          <div className="h-24 border-r border-purple-900/40 mr-6" />
+          <nav className="flex flex-col gap-6 text-gray-400">
+            <span className="transform -rotate-90 tracking-widest text-xs">#about</span>
+            <div className="w-px h-24 bg-gray-800" />
+          </nav>
+        </aside>
 
-          {/* Dark Translucent Highlights */}
-          <div className="mt-12 rounded-xl shadow-xl p-8 text-left
-            bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-purple-400 hover:shadow-purple-500/30 transition">
-            <h2 className="text-2xl font-semibold mb-4 text-purple-300 flex items-center gap-3">
-              <img src={highlights} alt="highlights icon" className="w-7 h-7" />
-              Highlights
-            </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-200">
-              <li>Developed a smart irrigation system using IoT for automated plant watering.</li>
-              <li>Built full-stack apps including a Resume Builder, TODO list, and real-time chat app in C++ and HTML, CSS.</li>
-              <li>Smart India Hackathon 2023 Semi-finalist - contributed to impactful educational tech.</li>
-              <li>Participated in techXcelerate in BITS Pilani Hyderabad and secured top 10 ranking</li>
-              <li>Active problem solver on LeetCode and CodeChef, with a strong focus on algorithms.</li>
-              <li>Participated as a research analyst under the Department of Veterinary and Animal Extension Education, WBUAFS.</li>
-              <li>Always exploring new tools and pushing the boundaries of personal projects.</li>
-            </ul>
-          </div>
-        </div>
-
-        <h1 className="text-4xl font-bold text-purple-300 mt-20 mb-10 pt-10 text-center">
-          My Activity Graphs
-        </h1>
-
-        <div className="flex flex-col items-center gap-10 px-4">
-          {/* Dark GitHub Card */}
-          <a
-            href="https://github.com/Chandra-Sekhar-Dutta"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group w-full md:w-3/4 lg:w-2/3 transform transition duration-500 hover:scale-105"
+        {/* MAIN */}
+        <main className="flex-1">
+          <motion.header 
+            className="mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl p-4
-              bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-pink-500 hover:shadow-pink-500/30 transition">
-              <p className="text-lg font-semibold text-center text-purple-300 mb-2 group-hover:text-pink-400 transition">
-                GitHub Contributions
-              </p>
-              <img
-                src="https://ghchart.rshah.org/Chandra-Sekhar-Dutta"
-                alt="GitHub Contribution Chart"
-                className="w-full h-auto rounded"
-              />
-            </div>
-          </a>
+            <h2 className="text-3xl md:text-4xl text-purple-300 font-semibold mb-2">/about-me</h2>
+            <p className="text-sm text-gray-400">Who am I?</p>
+          </motion.header>
 
-          {/* Dark LeetCode Card */}
-          <a
-            href="https://leetcode.com/u/Chandra_Sekhar_Dutta/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group w-full md:w-3/4 lg:w-2/3 transform transition duration-500 hover:scale-105"
+          {/* GRID */}
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            
+            {/* LEFT SECTION */}
+            <div className="md:col-span-7 space-y-6">
+              <motion.div 
+                className="bg-[#0e0f14] border border-gray-800 p-6 rounded-lg shadow-sm text-gray-300 transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <p>Hello, I'm <span className="text-purple-300 font-semibold">Chandra Sekhar Dutta</span>.</p>
+                <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+                  Self-taught full-stack developer based in India. I build responsive, modern and
+                  performance-focused web applications.
+                </p>
+              </motion.div>
+
+              {/* SKILLS LIKE THE REFERENCE */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <h3 className="text-purple-300 text-xl mb-4">#skills</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Languages</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><SiJavascript /> JavaScript</li>
+                      <li className="flex items-center gap-2"><SiPython /> Python</li>
+                      <li className="flex items-center gap-2"><SiCplusplus /> C++</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Frontend</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><FaReact /> React</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.7 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Backend</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><FaNodeJs /> Node.js</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-3 border border-gray-700 rounded bg-[#0d0d10] transition-all duration-300 hover:border-purple-500 hover:shadow-md hover:shadow-purple-500/30 cursor-pointer"
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.8 }}
+                  >
+                    <h4 className="text-xs text-gray-400 mb-2 uppercase">Databases</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li className="flex items-center gap-2"><SiMysql /> MySQL</li>
+                      <li className="flex items-center gap-2"><SiMongodb /> MongoDB</li>
+                    </ul>
+                  </motion.div>
+
+                </div>
+              </motion.div>
+
+              {/* FUN FACTS */}
+              <motion.div 
+                className="mt-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                <h3 className="text-purple-300 text-xl mb-4">#my-fun-facts</h3>
+
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "I prefer winter over summer",
+                    "I enjoy learning new tech",
+                    "Coffee fuels my coding sessions",
+                    "I love art"
+                  ].map((f, i) => (
+                    <motion.span
+                      key={i}
+                      className="text-xs border border-gray-700 px-3 py-2 rounded bg-[#0d0d12] cursor-pointer transition-all duration-300 hover:border-purple-500 hover:bg-purple-900/20"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: 1 + i * 0.1 }}
+                    >
+                      {f}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+
+            </div>
+
+          </section>
+
+          {/* GRAPHS */}
+          <motion.section 
+            className="mt-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl p-4
-              bg-black/40 backdrop-blur-xl border border-gray-700 hover:border-yellow-400 hover:shadow-yellow-500/30 transition">
-              <p className="text-lg font-semibold text-center text-yellow-300 mb-2 group-hover:text-yellow-400 transition">
-                LeetCode Progress
-              </p>
-              <img
-                src="https://leetcard.jacoblin.cool/Chandra_Sekhar_Dutta?theme=dark&ext=heatmap"
-                alt="LeetCode Card"
-                className="w-full h-auto rounded"
-              />
-            </div>
-          </a>
-        </div>
+            <h3 className="text-purple-300 text-xl mb-6">My Activity Graphs</h3>
 
-        <div className="mt-20 mb-10 pt-10 text-center">
-          <Services />
-          <Research />
-        </div>
-      </section>
-    </>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.a
+                href="https://github.com/Chandra-Sekhar-Dutta"
+                target="_blank"
+                rel="noreferrer"
+                className="block rounded-lg overflow-hidden border border-gray-800 p-4 bg-[#0d0d12] transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20"
+                whileHover={{ y: -5, scale: 1.02 }}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.3 }}
+              >
+                <div className="text-sm text-purple-300 mb-3">GitHub Contributions</div>
+                <img
+                  src="https://ghchart.rshah.org/Chandra-Sekhar-Dutta"
+                  alt="github chart"
+                  className="w-full rounded"
+                />
+              </motion.a>
+
+              <motion.a
+                href="https://leetcode.com/u/Chandra_Sekhar_Dutta/"
+                target="_blank"
+                rel="noreferrer"
+                className="block rounded-lg overflow-hidden border border-gray-800 p-4 bg-[#0d0d12] transition-all duration-300 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20"
+                whileHover={{ y: -5, scale: 1.02 }}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
+              >
+                <div className="text-sm text-yellow-300 mb-3">LeetCode Progress</div>
+                <img
+                  src="https://leetcard.jacoblin.cool/Chandra_Sekhar_Dutta?theme=dark&ext=heatmap"
+                  alt="leetcode card"
+                  className="w-full rounded"
+                />
+              </motion.a>
+            </div>
+          </motion.section>
+
+          <section className="mt-16">
+            <Services />
+            <Research />
+          </section>
+
+        </main>
+      </div>
+
+
+    </div>
   )
 }
 
