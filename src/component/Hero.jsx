@@ -14,14 +14,20 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="hidden md:flex flex-col gap-6 absolute left-8 top-1/3 text-gray-400"
       >
-        {[FaGithub, FaLinkedin].map((Icon, i) => (
-          <motion.div
+        {[
+          { Icon: FaGithub, link: "https://github.com/Chandra-Sekhar-Dutta" },
+          { Icon: FaLinkedin, link: "https://www.linkedin.com/in/chandra-sekhar-dutta-578595234/" }
+        ].map(({ Icon, link }, i) => (
+          <motion.a
             key={i}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.2, y: -4, color: "#c084fc" }}
             className="cursor-pointer"
           >
             <Icon className="text-xl" />
-          </motion.div>
+          </motion.a>
         ))}
       </motion.div>
 
