@@ -58,7 +58,7 @@ const Footer = () => {
         transition={{ delay: 0.4 }}
         className="mt-10 text-center text-xs text-gray-600"
       >
-        © {new Date().getFullYear()} Chandra Sekhar Dutta. Made by Chandra.
+        © {new Date().getFullYear()} Made by Chandra Sekhar Dutta.
       </motion.p>
     </motion.footer>
   );

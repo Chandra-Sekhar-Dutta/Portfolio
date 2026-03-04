@@ -9,7 +9,6 @@ import Research from '../component/Research'
 
 const About = () => {
   const [githubStats, setGithubStats] = useState({})
-  const [leetcodeStats, setLeetcodeStats] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,19 +20,6 @@ const About = () => {
           Followers: githubData.followers,
           Following: githubData.following,
           Location: githubData.location || 'N/A',
-        })
-
-        const leetcodeResponse = await fetch(
-          'https://leetcode-stats-api.herokuapp.com/ChandraSekharDutta'
-        )
-        const leetcodeData = await leetcodeResponse.json()
-        setLeetcodeStats({
-          'Total Solved': leetcodeData.totalSolved,
-          'Ranking': leetcodeData.ranking,
-          'Acceptance Rate': leetcodeData.acceptanceRate + '%',
-          'Easy': `${leetcodeData.easySolved} / ${leetcodeData.totalEasy}`,
-          'Medium': `${leetcodeData.mediumSolved} / ${leetcodeData.totalMedium}`,
-          'Hard': `${leetcodeData.hardSolved} / ${leetcodeData.totalHard}`,
         })
       } catch (error) {
         console.error('Error fetching stats:', error)
@@ -59,17 +45,17 @@ const About = () => {
         {/* MAIN */}
         <main className="flex-1">
           <motion.header 
-            className="mb-8"
+            className="mb-12"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl text-purple-300 font-semibold mb-2">/about-me</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-purple-300 mb-3">/about-me</h2>
             <p className="text-sm text-gray-400">Who am I?</p>
           </motion.header>
 
           {/* GRID */}
-          <section className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             
             {/* LEFT SECTION */}
             <div className="md:col-span-7 space-y-6">
@@ -226,6 +212,45 @@ const About = () => {
 
             </div>
 
+            {/* RIGHT SIDEBAR - ANIMATED */}
+            <aside className="hidden lg:flex lg:col-span-5 flex-col items-center justify-center relative h-96">
+              <motion.div
+                className="absolute top-0 left-32 w-px h-40 bg-gradient-to-b from-purple-500 to-transparent"
+                animate={{ height: [160, 200, 160] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              <motion.div
+                className="absolute top-32 left-24 w-32 h-32 rounded-full border-2 border-purple-500/30"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+              
+              <motion.div
+                className="absolute top-64 left-0 w-16 h-16 rounded-lg border border-purple-400/40"
+                animate={{ 
+                  y: [0, -20, 0],
+                  rotate: [0, 90, 180]
+                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              <motion.div
+                className="absolute bottom-32 left-12 w-4 h-4 rounded-full bg-purple-400/60"
+                animate={{ 
+                  y: [0, -25, 0],
+                  opacity: [0.3, 1, 0.3]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              <motion.div
+                className="absolute bottom-12 left-32 w-px h-32 bg-gradient-to-t from-pink-500/60 to-transparent"
+                animate={{ height: [128, 160, 128] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
+            </aside>
+
           </section>
 
           {/* GRAPHS */}
@@ -237,12 +262,12 @@ const About = () => {
           >
             <h3 className="text-purple-300 text-xl mb-6">My Activity Graphs</h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="w-full">
               <motion.a
                 href="https://github.com/Chandra-Sekhar-Dutta"
                 target="_blank"
                 rel="noreferrer"
-                className="block rounded-lg overflow-hidden border border-gray-800 p-4 bg-[#0d0d12] transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20"
+                className="block w-full rounded-lg overflow-hidden border border-gray-800 p-6 bg-[#0d0d12] transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20"
                 whileHover={{ y: -5, scale: 1.02 }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -252,24 +277,6 @@ const About = () => {
                 <img
                   src="https://ghchart.rshah.org/Chandra-Sekhar-Dutta"
                   alt="github chart"
-                  className="w-full rounded"
-                />
-              </motion.a>
-
-              <motion.a
-                href="https://leetcode.com/u/Chandra_Sekhar_Dutta/"
-                target="_blank"
-                rel="noreferrer"
-                className="block rounded-lg overflow-hidden border border-gray-800 p-4 bg-[#0d0d12] transition-all duration-300 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20"
-                whileHover={{ y: -5, scale: 1.02 }}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.4 }}
-              >
-                <div className="text-sm text-yellow-300 mb-3">LeetCode Progress</div>
-                <img
-                  src="https://leetcard.jacoblin.cool/Chandra_Sekhar_Dutta?theme=dark&ext=heatmap"
-                  alt="leetcode card"
                   className="w-full rounded"
                 />
               </motion.a>

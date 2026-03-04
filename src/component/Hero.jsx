@@ -56,7 +56,7 @@ const Hero = () => {
 
           {/* Resume Button */}
           <motion.a
-            href="https://drive.google.com/uc?export=download&id=1UhnXSXMgK_QG4wYFJPJPqyAbBiZglbNd"
+            href="https://drive.google.com/file/d/17PXPQvyh9dsKk5F1kHE3p_jJ-W92ItxQ/view?usp=sharing"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168,85,247,0.4)" }}
             className="inline-block mt-4 px-8 py-3 border border-purple-500 text-purple-300 
                        hover:bg-purple-600/20 transition rounded"

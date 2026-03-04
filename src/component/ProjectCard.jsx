@@ -11,7 +11,7 @@ import Resume from '../assets/Resume.jpeg';
 const projects = [
   {
     id: 1,
-    title: 'AI Generated Resume Builder',
+    title: 'AI Powered Resume Builder',
     description:
       'A full-stack web application for building, editing, and downloading AI-generated professional resumes.',
     topics: ['AI', 'Resume Builder', 'Web Dev'],

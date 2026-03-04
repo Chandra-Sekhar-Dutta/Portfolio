@@ -42,7 +42,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 items-center">
-          {["/", "/about", "/projects", "/contact"].map((path, i) => (
+          {["/", "/about", "/projects", "/experience", "/contact"].map((path, i) => (
             <NavLink key={i} to={path} className={navLinkClass}>
               <span className="hover-underline-animation">
                 {path === "/" ? "Home" : path.slice(1)}
@@ -71,7 +71,7 @@ const Navbar = () => {
             className="md:hidden bg-[#0f0f16] border-t border-purple-900/20"
           >
             <ul className="flex flex-col items-center py-6 space-y-4">
-              {["/", "/about", "/projects", "/contact"].map((path, i) => (
+              {["/", "/about", "/projects", "/experience", "/contact"].map((path, i) => (
                 <NavLink
                   key={i}
                   to={path}
